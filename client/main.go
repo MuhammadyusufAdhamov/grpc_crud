@@ -2,8 +2,7 @@ package main
 
 import (
 	"context"
-	"fmt"
-	"log"
+	
 
 	crudService "github.com/MuhammadyusufAdhamov/grpc_crud/genproto/crud_service"
 	"google.golang.org/grpc"
@@ -18,37 +17,40 @@ func main() {
 
 	client := crudService.NewUserCrudClient(conn)
 
-	resp, err := client.Create(context.Background(), &crudService.User{FirstName: "Muhammadyusuf", LastName: "Adhamov", Age: 19, PhoneNumber: "93441509"})
-	if err != nil {
-		log.Fatalf("Error while creating user profile %v", err)
-	}
-	fmt.Println(resp)
+	// resp, err := client.Create(context.Background(), &crudService.User{FirstName: "Muhammadyusuf", LastName: "Adhamov", Age: 19, PhoneNumber: "93441509"})
+	// if err != nil {
+	// 	fmt.Println(err)
+	// }
+	// fmt.Println(resp)
 
-	data, err := client.Get(context.Background(), &crudService.IdUser{Id: 1})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(data)
+	// data, err := client.Get(context.Background(), &crudService.IdUser{Id: 8})
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println(data)
 
-	data, err = client.Update(context.Background(), &crudService.User{
-		FirstName: "Muhammadyusuf",
-		LastName:  "Adhamov",
-		Age:       20,
-		Id:        1,
-	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(data)
-	_, err = client.GetAll(context.Background(), &crudService.GetAllUsersParams{
-		Page:  1,
-		Limit: 10,
-	})
-	if err != nil {
-		panic(err)
-	}
+	// data, err := client.Update(context.Background(), &crudService.User{
+	// 	FirstName: "Muhammadyusuf",
+	// 	LastName:  "Adhamov",
+	// 	Age:       20,
+	// 	Id:        8,
+	// })
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println(data)
 
-	_, err = client.Delete(context.Background(), &crudService.IdUser{Id: 1})
+	// data, err := client.GetAll(context.Background(), &crudService.GetAllUsersParams{
+	// 	Limit: 10,
+	// 	Page:  1,
+	// 	Search: "uha",
+	// })
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println(data)
+
+	_, err = client.Delete(context.Background(), &crudService.IdUser{Id: 8})
 	if err != nil {
 		panic(err)
 	}
